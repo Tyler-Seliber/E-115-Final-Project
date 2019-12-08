@@ -16,6 +16,9 @@
 		2F56DD8A239C7D5200FCD714 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F56DD88239C7D5200FCD714 /* LaunchScreen.storyboard */; };
 		2F56DD95239C7D5200FCD714 /* Final_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F56DD94239C7D5200FCD714 /* Final_ProjectTests.swift */; };
 		2F56DDA0239C7D5200FCD714 /* Final_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F56DD9F239C7D5200FCD714 /* Final_ProjectUITests.swift */; };
+		2F56DDB0239CA85900FCD714 /* CheckersBoardBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F56DDAF239CA85900FCD714 /* CheckersBoardBox.swift */; };
+		2F56DDB2239CA8CB00FCD714 /* GridBoxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F56DDB1239CA8CB00FCD714 /* GridBoxModel.swift */; };
+		2F56DDB4239CAA7C00FCD714 /* CheckersBoxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F56DDB3239CAA7C00FCD714 /* CheckersBoxCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		2F56DD9B239C7D5200FCD714 /* Final ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Final ProjectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F56DD9F239C7D5200FCD714 /* Final_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Final_ProjectUITests.swift; sourceTree = "<group>"; };
 		2F56DDA1239C7D5200FCD714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F56DDAF239CA85900FCD714 /* CheckersBoardBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckersBoardBox.swift; sourceTree = "<group>"; };
+		2F56DDB1239CA8CB00FCD714 /* GridBoxModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridBoxModel.swift; sourceTree = "<group>"; };
+		2F56DDB3239CAA7C00FCD714 /* CheckersBoxCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckersBoxCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,9 @@
 				2F56DD7A239C7D5100FCD714 /* AppDelegate.swift */,
 				2F56DD7C239C7D5100FCD714 /* SceneDelegate.swift */,
 				2F56DD7E239C7D5100FCD714 /* ViewController.swift */,
+				2F56DDAF239CA85900FCD714 /* CheckersBoardBox.swift */,
+				2F56DDB1239CA8CB00FCD714 /* GridBoxModel.swift */,
+				2F56DDB3239CAA7C00FCD714 /* CheckersBoxCollectionViewCell.swift */,
 				2F56DD80239C7D5100FCD714 /* Main.storyboard */,
 				2F56DD86239C7D5200FCD714 /* Assets.xcassets */,
 				2F56DD88239C7D5200FCD714 /* LaunchScreen.storyboard */,
@@ -262,6 +271,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F56DDB4239CAA7C00FCD714 /* CheckersBoxCollectionViewCell.swift in Sources */,
+				2F56DDB2239CA8CB00FCD714 /* GridBoxModel.swift in Sources */,
+				2F56DDB0239CA85900FCD714 /* CheckersBoardBox.swift in Sources */,
 				2F56DD7F239C7D5100FCD714 /* ViewController.swift in Sources */,
 				2F56DD7B239C7D5100FCD714 /* AppDelegate.swift in Sources */,
 				2F56DD85239C7D5100FCD714 /* Final_Project.xcdatamodeld in Sources */,
