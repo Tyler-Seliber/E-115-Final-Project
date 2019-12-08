@@ -10,6 +10,13 @@ import Foundation
 
 class CheckersBoardBox {
     
-    var hasPiece = false;
+    // Box Background Color
+    var backgroundColor = ""
+    // If the box has a checkers piece
+    var isOccupied = false;
+    // Checkers piece color
+    var pieceColor = ""
+    // If checkers piece is king
+    var isKing = false
     
 }

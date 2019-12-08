@@ -18,6 +18,6 @@ class CheckersBoxCollectionViewCell: UICollectionViewCell {
         
         self.box = box
         
-        //itemImage.image = UIImage(named: item.itemName)
+        gridBoxImage.image = UIImage(named: box.backgroundColor)
     }
 }
