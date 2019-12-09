@@ -81,6 +81,9 @@ class GridBoxModel {
                 box.isOccupied = !box.isOccupied
             }
         }
+        box.rowNumber = row
+        box.columnNumber = column
+        
         return box
     }
     

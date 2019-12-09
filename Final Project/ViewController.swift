@@ -69,21 +69,16 @@ extension ViewController: UICollectionViewDelegate {
     // Runs whenever a CollectionViewCell is tapped
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print("tapped \(indexPath)\t isOccupied = \(boxArray[indexPath.row].isOccupied)")
+        print("tapped \(indexPath) (\(boxArray[indexPath.row].rowNumber),\(boxArray[indexPath.row].columnNumber))\t isOccupied = \(boxArray[indexPath.row].isOccupied)")
         
     }
     
     // Animate the cells(?)
-    func collectionView(_ collectionView: UICollectionView,
-                        willDisplay cell: UICollectionViewCell,
-                        forItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         cell.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         
-        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: .curveEaseOut, animations: {
-            cell.transform = .identity
-        }, completion: nil)
-        
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: .curveEaseOut, animations: {cell.transform = .identity}, completion: nil)
     }
     
 }
