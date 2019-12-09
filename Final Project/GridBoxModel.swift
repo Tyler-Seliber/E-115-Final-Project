@@ -34,27 +34,27 @@ class GridBoxModel {
         // Create the grid of CheckersBoardBox
         for row in (0..<8) {
             
-            print("row \(row)")
+//            print("row \(row)")
             if (row % 2 == 0) {
                 for column in 0..<8 {
                     if (column % 2 == 0) {
-                        generatedBoxesArray.append(addBox(backgroundColor: "Red", pieceColor: "Red"))
+                        generatedBoxesArray.append(addBox(backgroundColor: "Red", row: row, column: column))
                     }
                     else {
-                        generatedBoxesArray.append(addBox(backgroundColor: "Black", pieceColor: "Red"))
+                        generatedBoxesArray.append(addBox(backgroundColor: "Black", row: row, column: column))
                     }
-                    print("column \(column)")
+//                    print("column \(column)")
                 }
             }
             else {
                 for column in 0..<8 {
                     if (column % 2 == 0) {
-                        generatedBoxesArray.append(addBox(backgroundColor: "Black", pieceColor: "Red"))
+                        generatedBoxesArray.append(addBox(backgroundColor: "Black", row: row, column: column))
                     }
                     else {
-                        generatedBoxesArray.append(addBox(backgroundColor: "Red", pieceColor: "Red"))
+                        generatedBoxesArray.append(addBox(backgroundColor: "Red", row: row, column: column))
                     }
-                    print("column \(column)")
+//                    print("column \(column)")
                 }
             }
         }
@@ -64,17 +64,24 @@ class GridBoxModel {
         
     }
     
-    func addBox(backgroundColor: String, pieceColor: String) -> CheckersBoardBox {
+    func addBox(backgroundColor: String, row: Int, column: Int) -> CheckersBoardBox {
         
         let box = CheckersBoardBox()
         
         box.boxColor = "\(backgroundColor)Square"
         box.isOccupied = (backgroundColor == pieceOnBoxColor)
-        box.pieceColor = pieceColor
-        box.isKing = false
-        
+        if (box.isOccupied) {
+            if (row >= 0 && row <= 2) {
+                box.pieceColor = "Black"
+            }
+            else if (row >= 5 && row <= 7) {
+                box.pieceColor = "Red"
+            }
+            else {
+                box.isOccupied = !box.isOccupied
+            }
+        }
         return box
-        
     }
     
 }

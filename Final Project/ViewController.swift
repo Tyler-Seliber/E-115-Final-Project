@@ -69,7 +69,7 @@ extension ViewController: UICollectionViewDelegate {
     // Runs whenever a CollectionViewCell is tapped
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print("tapped \(indexPath)")
+        print("tapped \(indexPath)\t isOccupied = \(boxArray[indexPath.row].isOccupied)")
         
     }
     

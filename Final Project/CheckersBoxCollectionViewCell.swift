@@ -20,8 +20,14 @@ class CheckersBoxCollectionViewCell: UICollectionViewCell {
         self.box = box
         
         gridBoxImage.image = UIImage(named: box.boxColor)
-        pieceImage.image = UIImage(named: "\(box.pieceColor)Piece")
-        
         pieceImage.isHidden = !box.isOccupied
+        if (box.isOccupied && box.isKing) {
+            pieceImage.image = UIImage(named: "\(box.pieceColor)PieceCrown")
+        }
+        else if (box.isOccupied) {
+            pieceImage.image = UIImage(named: "\(box.pieceColor)Piece")
+
+        }
+        
     }
 }
