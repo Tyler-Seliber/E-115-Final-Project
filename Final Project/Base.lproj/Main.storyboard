@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IW6-Zy-XIh">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IW6-Zy-XIh">
                                 <rect key="frame" x="20" y="238.66666666666663" width="335" height="335"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -26,7 +26,6 @@
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CheckersBoardGridCell" translatesAutoresizingMaskIntoConstraints="NO" id="Xb9-Db-raj" customClass="CheckersBoxCollectionViewCell" customModule="Final_Project" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="x4D-j1-VYe">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -42,6 +41,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="iUZ-5e-Ui2" secondAttribute="trailing" id="u7f-ZG-FZo"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Xb9-Db-raj" secondAttribute="height" multiplier="1:1" id="OnU-tK-m5K"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="gridBoxImage" destination="iUZ-5e-Ui2" id="nBy-AK-A6e"/>
                                         </connections>

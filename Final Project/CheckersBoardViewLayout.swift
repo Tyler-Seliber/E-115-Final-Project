@@ -98,7 +98,8 @@ class CheckersBoardViewLayout: UICollectionViewLayout {
             let indexPath = IndexPath(item: item, section: 0)
             
             //Different offset based on what column the item is
-            for column in 0..<numberOfColumns {
+            for _ in 0..<numberOfColumns {
+//            for column in 0..<numberOfColumns {
 //                switch column {
 //                case 0:
 //                    yOffset.append(2 * cellPadding)
@@ -123,7 +124,7 @@ class CheckersBoardViewLayout: UICollectionViewLayout {
             }
             
             //Measuring the frame
-            let height = cellPadding * 2 + cellHeight
+//            let height = cellPadding * 2 + cellHeight
             let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: columnWidth)
             let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
             

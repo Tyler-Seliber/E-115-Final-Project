@@ -21,13 +21,13 @@ class GridBoxModel {
         for _ in (1...4) {
             
             for _ in 1...4 {
-                generatedBoxesArray.append(addBox(backgroundColor: "RedSquare.png", isOccupied: false))
-                generatedBoxesArray.append(addBox(backgroundColor: "BlackSquare.png", isOccupied: false))
+                generatedBoxesArray.append(addBox(backgroundColor: "RedSquare", isOccupied: false))
+                generatedBoxesArray.append(addBox(backgroundColor: "BlackSquare", isOccupied: false))
             }
             
             for _ in 1...4 {
-                generatedBoxesArray.append(addBox(backgroundColor: "BlackSquare.png", isOccupied: false))
-                generatedBoxesArray.append(addBox(backgroundColor: "RedSquare.png", isOccupied: false))
+                generatedBoxesArray.append(addBox(backgroundColor: "BlackSquare", isOccupied: false))
+                generatedBoxesArray.append(addBox(backgroundColor: "RedSquare", isOccupied: false))
             }
         }
         
