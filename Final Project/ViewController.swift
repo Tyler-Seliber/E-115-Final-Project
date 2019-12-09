@@ -33,13 +33,14 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-    
         
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 0
-//    }
+    func movePiece(moveFrom: IndexPath, moveTo: IndexPath) {
+        
+        
+        
+    }
     
 }
 
