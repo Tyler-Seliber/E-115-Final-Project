@@ -12,12 +12,23 @@ class GridBoxModel {
     
     func getGridBoxes() -> [CheckersBoardBox] {
         
-        // Declare an array to store the generated cards
+        // Declare an array to store the generated boxes
         var generatedBoxesArray = [CheckersBoardBox]()
         
-        for _ in 1...32 {
-            generatedBoxesArray.append(addBox(backgroundColor: "RedSquare.png", isOccupied: false))
-            generatedBoxesArray.append(addBox(backgroundColor: "BlackSquare.png", isOccupied: false))
+        
+        // Create the grid of CheckersBoardBox
+        
+        for _ in (1...4) {
+            
+            for _ in 1...4 {
+                generatedBoxesArray.append(addBox(backgroundColor: "RedSquare.png", isOccupied: false))
+                generatedBoxesArray.append(addBox(backgroundColor: "BlackSquare.png", isOccupied: false))
+            }
+            
+            for _ in 1...4 {
+                generatedBoxesArray.append(addBox(backgroundColor: "BlackSquare.png", isOccupied: false))
+                generatedBoxesArray.append(addBox(backgroundColor: "RedSquare.png", isOccupied: false))
+            }
         }
         
         // Return the array
