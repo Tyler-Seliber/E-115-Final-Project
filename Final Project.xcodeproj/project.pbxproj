@@ -19,6 +19,7 @@
 		2F56DDB0239CA85900FCD714 /* CheckersBoardBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F56DDAF239CA85900FCD714 /* CheckersBoardBox.swift */; };
 		2F56DDB2239CA8CB00FCD714 /* GridBoxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F56DDB1239CA8CB00FCD714 /* GridBoxModel.swift */; };
 		2F56DDB4239CAA7C00FCD714 /* CheckersBoxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F56DDB3239CAA7C00FCD714 /* CheckersBoxCollectionViewCell.swift */; };
+		2F57BB9A239F0A35007D33A5 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F57BB99239F0A35007D33A5 /* Player.swift */; };
 		2FC88A5A239EB5C500A6F20F /* CheckersBoardViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC88A59239EB5C500A6F20F /* CheckersBoardViewLayout.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		2F56DDAF239CA85900FCD714 /* CheckersBoardBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckersBoardBox.swift; sourceTree = "<group>"; };
 		2F56DDB1239CA8CB00FCD714 /* GridBoxModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridBoxModel.swift; sourceTree = "<group>"; };
 		2F56DDB3239CAA7C00FCD714 /* CheckersBoxCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckersBoxCollectionViewCell.swift; sourceTree = "<group>"; };
+		2F57BB99239F0A35007D33A5 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		2FC88A59239EB5C500A6F20F /* CheckersBoardViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckersBoardViewLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +115,7 @@
 				2F56DD7C239C7D5100FCD714 /* SceneDelegate.swift */,
 				2F56DD7E239C7D5100FCD714 /* ViewController.swift */,
 				2F56DDAF239CA85900FCD714 /* CheckersBoardBox.swift */,
+				2F57BB99239F0A35007D33A5 /* Player.swift */,
 				2F56DDB1239CA8CB00FCD714 /* GridBoxModel.swift */,
 				2F56DDB3239CAA7C00FCD714 /* CheckersBoxCollectionViewCell.swift */,
 				2FC88A59239EB5C500A6F20F /* CheckersBoardViewLayout.swift */,
@@ -281,6 +284,7 @@
 				2F56DD7F239C7D5100FCD714 /* ViewController.swift in Sources */,
 				2F56DD7B239C7D5100FCD714 /* AppDelegate.swift in Sources */,
 				2F56DD85239C7D5100FCD714 /* Final_Project.xcdatamodeld in Sources */,
+				2F57BB9A239F0A35007D33A5 /* Player.swift in Sources */,
 				2F56DD7D239C7D5100FCD714 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
