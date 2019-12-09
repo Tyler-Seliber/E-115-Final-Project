@@ -33,6 +33,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+    
         
     }
     
