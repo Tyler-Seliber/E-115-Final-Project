@@ -33,12 +33,19 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iUZ-5e-Ui2">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RedPieceCrown" translatesAutoresizingMaskIntoConstraints="NO" id="apH-qa-q8L">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="iUZ-5e-Ui2" firstAttribute="leading" secondItem="x4D-j1-VYe" secondAttribute="leading" id="4FQ-6m-18K"/>
+                                                <constraint firstItem="apH-qa-q8L" firstAttribute="leading" secondItem="x4D-j1-VYe" secondAttribute="leading" id="PfY-t5-Oaa"/>
                                                 <constraint firstItem="iUZ-5e-Ui2" firstAttribute="top" secondItem="x4D-j1-VYe" secondAttribute="top" id="Urn-P7-n5x"/>
                                                 <constraint firstAttribute="bottom" secondItem="iUZ-5e-Ui2" secondAttribute="bottom" id="gss-Ef-1Oj"/>
+                                                <constraint firstAttribute="bottom" secondItem="apH-qa-q8L" secondAttribute="bottom" id="iUE-sI-KSW"/>
+                                                <constraint firstItem="apH-qa-q8L" firstAttribute="top" secondItem="x4D-j1-VYe" secondAttribute="top" id="mHu-Ja-J2j"/>
                                                 <constraint firstAttribute="trailing" secondItem="iUZ-5e-Ui2" secondAttribute="trailing" id="u7f-ZG-FZo"/>
+                                                <constraint firstAttribute="trailing" secondItem="apH-qa-q8L" secondAttribute="trailing" id="v6c-YE-cEr"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <constraints>
@@ -46,6 +53,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="gridBoxImage" destination="iUZ-5e-Ui2" id="nBy-AK-A6e"/>
+                                            <outlet property="pieceImage" destination="apH-qa-q8L" id="eQZ-UH-Sbs"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -68,4 +76,7 @@
             <point key="canvasLocation" x="131.8840579710145" y="124.55357142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="RedPieceCrown" width="66.666664123535156" height="66.666664123535156"/>
+    </resources>
 </document>

@@ -10,24 +10,52 @@ import Foundation
 
 class GridBoxModel {
     
+    // String to keep track of what color boxes the pieces will be on
+    var pieceOnBoxColor = ""
+    
     func getGridBoxes() -> [CheckersBoardBox] {
+        
+        // Play game on random piece color
+        let random = Int.random(in: 0...1)
+        switch random {
+        case 0:
+            pieceOnBoxColor = "Black"
+            break
+        case 1:
+            pieceOnBoxColor = "Red"
+            break
+        default:
+            break
+        }
         
         // Declare an array to store the generated boxes
         var generatedBoxesArray = [CheckersBoardBox]()
         
-        
         // Create the grid of CheckersBoardBox
-        
-        for _ in (1...4) {
+        for row in (0..<8) {
             
-            for _ in 1...4 {
-                generatedBoxesArray.append(addBox(backgroundColor: "RedSquare", isOccupied: false))
-                generatedBoxesArray.append(addBox(backgroundColor: "BlackSquare", isOccupied: false))
+            print("row \(row)")
+            if (row % 2 == 0) {
+                for column in 0..<8 {
+                    if (column % 2 == 0) {
+                        generatedBoxesArray.append(addBox(backgroundColor: "Red", pieceColor: "Red"))
+                    }
+                    else {
+                        generatedBoxesArray.append(addBox(backgroundColor: "Black", pieceColor: "Red"))
+                    }
+                    print("column \(column)")
+                }
             }
-            
-            for _ in 1...4 {
-                generatedBoxesArray.append(addBox(backgroundColor: "BlackSquare", isOccupied: false))
-                generatedBoxesArray.append(addBox(backgroundColor: "RedSquare", isOccupied: false))
+            else {
+                for column in 0..<8 {
+                    if (column % 2 == 0) {
+                        generatedBoxesArray.append(addBox(backgroundColor: "Black", pieceColor: "Red"))
+                    }
+                    else {
+                        generatedBoxesArray.append(addBox(backgroundColor: "Red", pieceColor: "Red"))
+                    }
+                    print("column \(column)")
+                }
             }
         }
         
@@ -36,13 +64,13 @@ class GridBoxModel {
         
     }
     
-    func addBox(backgroundColor: String, isOccupied: Bool) -> CheckersBoardBox {
+    func addBox(backgroundColor: String, pieceColor: String) -> CheckersBoardBox {
         
         let box = CheckersBoardBox()
         
-        box.backgroundColor = backgroundColor
-        box.isOccupied = false
-        box.pieceColor = ""
+        box.boxColor = "\(backgroundColor)Square"
+        box.isOccupied = (backgroundColor == pieceOnBoxColor)
+        box.pieceColor = pieceColor
         box.isKing = false
         
         return box

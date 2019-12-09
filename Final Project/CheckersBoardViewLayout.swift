@@ -132,7 +132,7 @@ class CheckersBoardViewLayout: UICollectionViewLayout {
             let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             attributes.frame = insetFrame
             cache.append(attributes)
-            print ("frame.maxY", frame.maxY)
+//            print ("frame.maxY", frame.maxY)
             
             //We increase the max height of the content as we get more items
             contentHeight = max(collectionView.frame.height + 10, frame.maxY)
@@ -142,7 +142,7 @@ class CheckersBoardViewLayout: UICollectionViewLayout {
 //            yOffset[column] = yOffset[column] + 2 * (height - cellPadding)
             yOffset[column] += 42
             
-             print("column: \(column), yOffset: \(yOffset[column])")
+//             print("column: \(column), yOffset: \(yOffset[column])")
             
             let numberOfItems = delegate?.theNumberOfItemsInCollectionView()
             
@@ -152,8 +152,8 @@ class CheckersBoardViewLayout: UICollectionViewLayout {
             {
                 //In case we get to the last cell, we check the column of the cell before
                 //The last one, and based on that, we change the column
-                print ("indexPath.item: \(indexPath.item), numberOfItems: \(numberOfItems)")
-                print ("A")
+//                print ("indexPath.item: \(indexPath.item), numberOfItems: \(numberOfItems)")
+//                print ("A")
 //                switch column {
 //                case 0:
 //                    column = 2
@@ -165,7 +165,7 @@ class CheckersBoardViewLayout: UICollectionViewLayout {
 //                    return
 //                }
             } else  {
-                print ("B")
+//                print ("B")
                 column = column < (numberOfColumns - 1) ? (column + 1) : 0
             }
             
