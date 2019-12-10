@@ -16,6 +16,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         didSet {
             collectionView.dataSource = self
             collectionView.delegate = self
+            collectionView.dragDelegate = self
         }
     }
     
@@ -33,12 +34,20 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.dragDelegate = self
+        collectionView.dropDelegate = self
+        
+        collectionView.dragInteractionEnabled = true
         
     }
     
     func movePiece(moveFrom: IndexPath, moveTo: IndexPath) {
         
-        
+        let tempBox = boxArray[moveFrom.row]
+        print("\(tempBox.rowNumber) \(tempBox.columnNumber)")
+        boxArray[moveFrom.row] = boxArray[moveTo.row]
+        print("\(boxArray[moveFrom.row].rowNumber) \(boxArray[moveFrom.row].columnNumber)")
+        boxArray[moveTo.row] = tempBox
         
     }
     
@@ -72,6 +81,8 @@ extension ViewController: UICollectionViewDelegate {
         
         print("tapped \(indexPath.row) (\(boxArray[indexPath.row].rowNumber),\(boxArray[indexPath.row].columnNumber))\t isOccupied = \(boxArray[indexPath.row].isOccupied)")
         
+        //        movePiece(moveFrom: indexPath, moveTo: 26)
+        
     }
     
     // Animate the cells
@@ -81,6 +92,31 @@ extension ViewController: UICollectionViewDelegate {
         
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: .curveEaseOut, animations: {cell.transform = .identity}, completion: nil)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let temp = boxArray.remove(at: sourceIndexPath.item)
+        boxArray.insert(temp, at: destinationIndexPath.item)
+    }
+    
+}
+
+// MARK: UICollectionViewDragDelegate
+extension ViewController: UICollectionViewDragDelegate {
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        <#code#>
+    }
+    
+}
+
+extension ViewController: UICollectionViewDropDelegate {
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        <#code#>
+    }
+    
     
 }
 
