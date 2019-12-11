@@ -45,13 +45,38 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         
         
         // TODO: Change positions
-        let tempBox = boxArray[moveFrom]
-        print("\(tempBox.rowNumber) \(tempBox.columnNumber)")
-        boxArray[moveFrom] = boxArray[moveTo]
-        boxArray[moveFrom].boxColor = tempBox.boxColor
-        print("\(boxArray[moveFrom].rowNumber) \(boxArray[moveFrom].columnNumber)")
-        boxArray[moveTo] = tempBox
+        let boxFrom = boxArray[moveFrom]
+        let boxTo = boxArray[moveTo]
+        let tempBox = boxFrom.copy() as! CheckersBoardBox
         
+        boxFrom.changeIsOccupied(occupied: boxTo.getIsOccupied())
+        boxFrom.changePieceColor(piece: boxTo.getPieceColor())
+        boxFrom.changeIsKing(king: boxTo.getIsKing())
+        
+        boxTo.changeIsOccupied(occupied: tempBox.getIsOccupied())
+        boxTo.changePieceColor(piece: tempBox.getPieceColor())
+        boxTo.changeIsKing(king: tempBox.getIsKing())
+        
+        boxArray[moveFrom] = boxFrom
+        boxArray[moveTo] = boxTo
+        
+//        let boxFromColor = boxFrom.getBackground()
+//        let boxFromPosition = boxFrom.getPosition()
+//        let boxToColor = boxTo.getBackground()
+//
+////        boxTo.position = boxFrom.position
+////        boxTo.rowNumber = boxFrom.rowNumber
+////        boxTo.columnNumber = boxFrom.columnNumber
+//
+//
+////        print("\(tempBox.rowNumber) \(tempBox.columnNumber)")
+//        boxArray[moveFrom] = boxArray[moveTo]
+//        boxArray[moveFrom].changeBackground(color: boxFromColor)
+////        boxArray[moveFrom].boxColor = tempBox.boxColor
+////        print("\(boxArray[moveFrom].rowNumber) \(boxArray[moveFrom].columnNumber)")
+//        boxArray[moveTo] = tempBox
+//        boxArray[moveTo].changeBackground(color: boxToColor)
+//
         self.collectionView.reloadData()
         
     }
@@ -147,19 +172,20 @@ extension ViewController: UICollectionViewDelegate {
     // Runs whenever a CollectionViewCell is tapped
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let box = boxArray[indexPath.row]
-        print("tapped \(box.position) (\(box.rowNumber),\(box.columnNumber))\t isOccupied = \(box.isOccupied)")
+//        print("tapped \(box.position) (\(box.rowNumber),\(box.columnNumber))\t isOccupied = \(box.isOccupied)")
+        print("tapped \(box.getPosition()) \t isOccupied = \(box.getIsOccupied())")
         
-        movePiece(moveFrom: box.position, moveTo: 27)
+        movePiece(moveFrom: box.getPosition(), moveTo: 27)
         
     }
     
-    // Animate the cells
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
-        cell.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-        
-        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: .curveEaseOut, animations: {cell.transform = .identity}, completion: nil)
-    }
+//    // Animate the cells
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//
+//        cell.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+//        
+//        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: .curveEaseOut, animations: {cell.transform = .identity}, completion: nil)
+//    }
     
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
         return true
