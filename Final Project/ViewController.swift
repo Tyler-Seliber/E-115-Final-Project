@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//look
+
 let reuseIdentifier = "CheckersBoardGridCell"
 
 class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
