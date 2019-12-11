@@ -8,18 +8,75 @@
 
 import Foundation
 
-class CheckersBoardBox {
+class CheckersBoardBox: NSCopying {
     
     // Box Background Color
-    var boxColor = ""
+    private var boxColor: String
     // If the box has a checkers piece
-    var isOccupied = false;
+    private var isOccupied: Bool
     // Checkers piece color
-    var pieceColor = ""
+    private var pieceColor: String
     // If checkers piece is king
-    var isKing = false
+    private var isKing: Bool
     // Keep track of box's position
-    var rowNumber = 0
-    var columnNumber = 0
+    private var position: Int
+//    var rowNumber: Int
+//    var columnNumber: Int
     
+    init(color: String, index: Int, hasPiece: Bool, colorOfPiece: String) {
+        boxColor = "\(color)Square"
+        isOccupied = hasPiece
+        pieceColor = colorOfPiece
+        isKing = false
+        position = index
+    }
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = CheckersBoardBox(color: boxColor, index: position, hasPiece: isOccupied, colorOfPiece: pieceColor)
+        return copy
+        
+    }
+    
+    // MARK: Modifier Functions
+    func changeBackground(color: String) {
+        boxColor = color
+    }
+    
+    func changeIsOccupied(occupied: Bool) {
+        isOccupied = occupied
+    }
+    
+    func changePieceColor(piece: String) {
+        pieceColor = piece
+    }
+    
+    func changeIsKing(king: Bool) {
+        isKing = king
+    }
+    
+    func changePosition(pos: Int) {
+        position = pos
+    }
+    
+    
+    // MARK: Accessor Functions
+    func getBackground() -> String {
+        return boxColor
+    }
+    
+    func getIsOccupied() -> Bool {
+        return isOccupied
+    }
+    
+    func getPieceColor() -> String {
+        return pieceColor
+    }
+    
+    func getIsKing() -> Bool {
+        return isKing
+    }
+    
+    func getPosition() -> Int {
+        return position
+    }
 }

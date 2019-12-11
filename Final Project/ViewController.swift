@@ -33,13 +33,32 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-    
         
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 0
-//    }
+    func movePiece(moveFrom: Int, moveTo: Int) {
+        
+        let boxFrom = boxArray[moveFrom]
+        let boxTo = boxArray[moveTo]
+        let tempBox = boxFrom.copy() as! CheckersBoardBox
+        
+        // Swap isOccupied, pieceColor, and isKing
+        boxFrom.changeIsOccupied(occupied: boxTo.getIsOccupied())
+        boxFrom.changePieceColor(piece: boxTo.getPieceColor())
+        boxFrom.changeIsKing(king: boxTo.getIsKing())
+        
+        boxTo.changeIsOccupied(occupied: tempBox.getIsOccupied())
+        boxTo.changePieceColor(piece: tempBox.getPieceColor())
+        boxTo.changeIsKing(king: tempBox.getIsKing())
+        
+        // Update the array
+        boxArray[moveFrom] = boxFrom
+        boxArray[moveTo] = boxTo
+
+        // Reload the collection view
+        self.collectionView.reloadData()
+        
+    }
     
 }
 
@@ -68,17 +87,28 @@ extension ViewController: UICollectionViewDelegate {
     
     // Runs whenever a CollectionViewCell is tapped
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let box = boxArray[indexPath.row]
+        print("tapped \(box.getPosition()) \t isOccupied = \(box.getIsOccupied())")
         
-        print("tapped \(indexPath) (\(boxArray[indexPath.row].rowNumber),\(boxArray[indexPath.row].columnNumber))\t isOccupied = \(boxArray[indexPath.row].isOccupied)")
+        movePiece(moveFrom: box.getPosition(), moveTo: 27)
         
     }
     
-    // Animate the cells(?)
+    // Animate the cells
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
+
         cell.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: .curveEaseOut, animations: {cell.transform = .identity}, completion: nil)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let temp = boxArray.remove(at: sourceIndexPath.item)
+        boxArray.insert(temp, at: destinationIndexPath.item)
     }
     
 }

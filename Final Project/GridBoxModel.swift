@@ -34,27 +34,29 @@ class GridBoxModel {
         // Create the grid of CheckersBoardBox
         for row in (0..<8) {
             
-//            print("row \(row)")
+            // print("row \(row)")
             if (row % 2 == 0) {
                 for column in 0..<8 {
+                    let position = 8 * row + column
                     if (column % 2 == 0) {
-                        generatedBoxesArray.append(addBox(backgroundColor: "Red", row: row, column: column))
+                        generatedBoxesArray.append(addBox(backgroundColor: "Red", position: position, row: row, column: column))
                     }
                     else {
-                        generatedBoxesArray.append(addBox(backgroundColor: "Black", row: row, column: column))
+                        generatedBoxesArray.append(addBox(backgroundColor: "Black", position: position, row: row, column: column))
                     }
-//                    print("column \(column)")
+                    // print("column \(column)")
                 }
             }
             else {
                 for column in 0..<8 {
+                    let position = 8 * row + column
                     if (column % 2 == 0) {
-                        generatedBoxesArray.append(addBox(backgroundColor: "Black", row: row, column: column))
+                        generatedBoxesArray.append(addBox(backgroundColor: "Black", position: position, row: row, column: column))
                     }
                     else {
-                        generatedBoxesArray.append(addBox(backgroundColor: "Red", row: row, column: column))
+                        generatedBoxesArray.append(addBox(backgroundColor: "Red", position: position, row: row, column: column))
                     }
-//                    print("column \(column)")
+                    // print("column \(column)")
                 }
             }
         }
@@ -64,25 +66,23 @@ class GridBoxModel {
         
     }
     
-    func addBox(backgroundColor: String, row: Int, column: Int) -> CheckersBoardBox {
+    func addBox(backgroundColor: String, position: Int, row: Int, column: Int) -> CheckersBoardBox {
         
-        let box = CheckersBoardBox()
-        
-        box.boxColor = "\(backgroundColor)Square"
-        box.isOccupied = (backgroundColor == pieceOnBoxColor)
-        if (box.isOccupied) {
+        var isOccupied = (backgroundColor == pieceOnBoxColor)
+        var pieceColor = ""
+        if (isOccupied) {
             if (row >= 0 && row <= 2) {
-                box.pieceColor = "Black"
+                pieceColor = "Black"
             }
             else if (row >= 5 && row <= 7) {
-                box.pieceColor = "Red"
+                pieceColor = "Red"
             }
             else {
-                box.isOccupied = !box.isOccupied
+                isOccupied = !isOccupied
             }
         }
-        box.rowNumber = row
-        box.columnNumber = column
+        
+        let box = CheckersBoardBox(color: backgroundColor, index: position, hasPiece: isOccupied, colorOfPiece: pieceColor)
         
         return box
     }
