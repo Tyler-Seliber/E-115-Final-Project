@@ -101,9 +101,6 @@ extension ViewController: UICollectionViewDelegate {
         else if (swapArray.count == 1){
             swapArray.append(indexPath.row)
             movePiece(moveFrom: swapArray.first!, moveTo: swapArray.last!)
-        }
-        
-        else if (swapArray.count == 2){
             swapArray.removeAll(keepingCapacity: true)
         }
         
