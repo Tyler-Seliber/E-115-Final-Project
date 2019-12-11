@@ -20,6 +20,8 @@ class CheckersBoardBox: NSCopying {
     private var isKing: Bool
     // Keep track of box's position
     private var position: Int
+    // Keep track if button should be clicked
+    private var isEnabled: Bool
 //    var rowNumber: Int
 //    var columnNumber: Int
     
@@ -29,6 +31,7 @@ class CheckersBoardBox: NSCopying {
         pieceColor = colorOfPiece
         isKing = false
         position = index
+        isEnabled = false
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
@@ -58,6 +61,10 @@ class CheckersBoardBox: NSCopying {
         position = pos
     }
     
+    func changeIsEnabled(enabled: Bool) {
+        isEnabled = enabled
+    }
+    
     
     // MARK: Accessor Functions
     func getBackground() -> String {
@@ -78,5 +85,9 @@ class CheckersBoardBox: NSCopying {
     
     func getPosition() -> Int {
         return position
+    }
+    
+    func getIsEnabled() -> Bool {
+        return isEnabled
     }
 }
