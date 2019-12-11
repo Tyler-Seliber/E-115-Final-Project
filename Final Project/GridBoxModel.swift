@@ -39,29 +39,24 @@ class GridBoxModel {
                 for column in 0..<8 {
                     let position = 8 * row + column
                     if (column % 2 == 0) {
-                        
-                        //                        generatedBoxesArray.append(CheckersBoardBox(color: "Red", index: position))
                         generatedBoxesArray.append(addBox(backgroundColor: "Red", position: position, row: row, column: column))
                     }
                     else {
-                        //                        generatedBoxesArray.append(CheckersBoardBox(color: "Black", index: position))
                         generatedBoxesArray.append(addBox(backgroundColor: "Black", position: position, row: row, column: column))
                     }
-                    //                    print("column \(column)")
+                    // print("column \(column)")
                 }
             }
             else {
                 for column in 0..<8 {
                     let position = 8 * row + column
                     if (column % 2 == 0) {
-                        //                        generatedBoxesArray.append(CheckersBoardBox(color: "Black", index: position))
                         generatedBoxesArray.append(addBox(backgroundColor: "Black", position: position, row: row, column: column))
                     }
                     else {
-                        //                        generatedBoxesArray.append(CheckersBoardBox(color: "Red", index: position))
                         generatedBoxesArray.append(addBox(backgroundColor: "Red", position: position, row: row, column: column))
                     }
-                    //                    print("column \(column)")
+                    // print("column \(column)")
                 }
             }
         }
