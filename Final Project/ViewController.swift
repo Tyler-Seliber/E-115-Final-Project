@@ -16,7 +16,6 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         didSet {
             collectionView.dataSource = self
             collectionView.delegate = self
-//            collectionView.dragDelegate = self
         }
     }
     
