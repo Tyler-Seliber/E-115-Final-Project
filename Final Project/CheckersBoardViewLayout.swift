@@ -18,7 +18,7 @@ extension CheckersBoardCollectionViewDelegate {
     }
 }
 
-class CheckersBoardViewLayout: UICollectionViewLayout {
+class CheckersBoardViewLayout: UICollectionViewFlowLayout {
     
     fileprivate var numberOfColumns = 8
     fileprivate var cellPadding: CGFloat = 0
@@ -42,6 +42,8 @@ class CheckersBoardViewLayout: UICollectionViewLayout {
     }
     
     override func prepare() {
+        
+        self.minimumInteritemSpacing = 0
         
         // We begin measuring the location of items only if the cache is empty
         guard cache.isEmpty == true, let collectionView = collectionView else {return}
@@ -135,7 +137,8 @@ class CheckersBoardViewLayout: UICollectionViewLayout {
 //            print ("frame.maxY", frame.maxY)
             
             //We increase the max height of the content as we get more items
-            contentHeight = max(collectionView.frame.height + 10, frame.maxY)
+//            contentHeight = max(collectionView.frame.height + 10, frame.maxY)
+            contentHeight = collectionView.frame.height
             
             
             //We increase the yOffset, too
