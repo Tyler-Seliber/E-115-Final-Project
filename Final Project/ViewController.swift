@@ -10,6 +10,7 @@ import UIKit
 
 let reuseIdentifier = "CheckersBoardGridCell"
 
+
 class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView! {
@@ -21,6 +22,8 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
     var model = GridBoxModel()
     var boxArray = [CheckersBoardBox]()
+    var swapArray:[Int] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +94,14 @@ extension ViewController: UICollectionViewDelegate {
         print("tapped \(box.getPosition()) \t isOccupied = \(box.getIsOccupied())")
         
         movePiece(moveFrom: box.getPosition(), moveTo: 27)
+        
+        if (swapArray.count != 2){
+            swapArray.append(indexPath.row)
+        }
+        
+        else if (swapArray.count == 2){
+            swapArray.removeAll(keepingCapacity: true)
+        }
         
     }
     
