@@ -37,22 +37,24 @@ class GridBoxModel {
 //            print("row \(row)")
             if (row % 2 == 0) {
                 for column in 0..<8 {
+                    let position = 8 * row + column
                     if (column % 2 == 0) {
-                        generatedBoxesArray.append(addBox(backgroundColor: "Red", row: row, column: column))
+                        generatedBoxesArray.append(addBox(backgroundColor: "Red", position: position, row: row, column: column))
                     }
                     else {
-                        generatedBoxesArray.append(addBox(backgroundColor: "Black", row: row, column: column))
+                        generatedBoxesArray.append(addBox(backgroundColor: "Black", position: position, row: row, column: column))
                     }
 //                    print("column \(column)")
                 }
             }
             else {
                 for column in 0..<8 {
+                    let position = 8 * row + column
                     if (column % 2 == 0) {
-                        generatedBoxesArray.append(addBox(backgroundColor: "Black", row: row, column: column))
+                        generatedBoxesArray.append(addBox(backgroundColor: "Black", position: position, row: row, column: column))
                     }
                     else {
-                        generatedBoxesArray.append(addBox(backgroundColor: "Red", row: row, column: column))
+                        generatedBoxesArray.append(addBox(backgroundColor: "Red", position: position, row: row, column: column))
                     }
 //                    print("column \(column)")
                 }
@@ -64,7 +66,7 @@ class GridBoxModel {
         
     }
     
-    func addBox(backgroundColor: String, row: Int, column: Int) -> CheckersBoardBox {
+    func addBox(backgroundColor: String, position: Int, row: Int, column: Int) -> CheckersBoardBox {
         
         let box = CheckersBoardBox()
         
@@ -81,6 +83,7 @@ class GridBoxModel {
                 box.isOccupied = !box.isOccupied
             }
         }
+        box.position = position
         box.rowNumber = row
         box.columnNumber = column
         
