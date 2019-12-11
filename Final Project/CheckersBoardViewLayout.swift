@@ -140,7 +140,8 @@ class CheckersBoardViewLayout: UICollectionViewLayout {
             
             //We increase the yOffset, too
 //            yOffset[column] = yOffset[column] + 2 * (height - cellPadding)
-            yOffset[column] += 42
+            yOffset[column] += collectionViewContentSize.height / 8.0
+//            yOffset[column] += 42
             
 //             print("column: \(column), yOffset: \(yOffset[column])")
             
