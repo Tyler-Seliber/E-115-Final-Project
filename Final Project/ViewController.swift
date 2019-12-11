@@ -93,10 +93,14 @@ extension ViewController: UICollectionViewDelegate {
         let box = boxArray[indexPath.row]
         print("tapped \(box.getPosition()) \t isOccupied = \(box.getIsOccupied())")
         
-        movePiece(moveFrom: box.getPosition(), moveTo: 27)
+//        movePiece(moveFrom: box.getPosition(), moveTo: 27)
         
-        if (swapArray.count != 2){
+        if (swapArray.count == 0){
             swapArray.append(indexPath.row)
+        }
+        else if (swapArray.count == 1){
+            swapArray.append(indexPath.row)
+            movePiece(moveFrom: swapArray.first!, moveTo: swapArray.last!)
         }
         
         else if (swapArray.count == 2){
