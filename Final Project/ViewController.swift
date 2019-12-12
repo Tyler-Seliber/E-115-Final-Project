@@ -103,14 +103,14 @@ extension ViewController: UICollectionViewDelegate {
         let box = boxArray[indexPath.row]
         print("tapped \(box.getPosition()) \t isOccupied = \(box.getIsOccupied())")
         
-        boxArray[indexPath.row].changeisTapped(tapped: true)
-        collectionView.reloadData()
-        
         // Add the box position to the array if the box contains a piece
         if (box.getIsOccupied() && swapArray.count == 0){
             swapArray.append(indexPath.row)
+            boxArray[indexPath.row].changeisTapped(tapped: true)
+            collectionView.reloadData()
         }
-        else if (swapArray.count == 1){
+        // Swap if the second box tapped is not occupied, unless it is the same box the selected piece is currently in (acts as a "deselect piece")
+        else if (swapArray.count == 1 && ((!boxArray[indexPath.row].getIsOccupied())) ^ (indexPath.row == swapArray[0])){
             swapArray.append(indexPath.row)
             movePiece(moveFrom: swapArray.first!, moveTo: swapArray.last!)
             swapArray.removeAll(keepingCapacity: true)
@@ -143,4 +143,10 @@ extension ViewController: CheckersBoardCollectionViewDelegate {
         return boxArray.count
     }
     
+}
+
+extension Bool {
+    static func ^ (left: Bool, right: Bool) -> Bool {
+        return left != right
+    }
 }
