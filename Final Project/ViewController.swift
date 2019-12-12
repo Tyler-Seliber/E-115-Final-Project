@@ -109,8 +109,16 @@ extension ViewController: UICollectionViewDelegate {
             boxArray[indexPath.row].changeisTapped(tapped: true)
             collectionView.reloadData()
         }
-        // Swap if the second box tapped is not occupied, unless it is the same box the selected piece is currently in (acts as a "deselect piece")
-        else if (swapArray.count == 1 && ((!boxArray[indexPath.row].getIsOccupied())) ^ (indexPath.row == swapArray[0])){
+            /*
+             Swap if:
+             A piece has already been selected to move
+             The second box tapped is not occupied, unless it is the same box the selected piece is currently in (acts as a "deselect piece")
+             The second box tapped has the same background color as the box the piece started in (Keeps pieces on same color for whole game)
+             */
+        else if (swapArray.count == 1
+            && !box.getIsOccupied() ^ (indexPath.row == swapArray[0])
+            && box.getBackground() == boxArray[swapArray[0]].getBackground()){
+            
             swapArray.append(indexPath.row)
             movePiece(moveFrom: swapArray.first!, moveTo: swapArray.last!)
             swapArray.removeAll(keepingCapacity: true)
@@ -118,13 +126,13 @@ extension ViewController: UICollectionViewDelegate {
         
     }
     
-//    // Animate the cells
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        
-//        cell.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-//        
-//        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: .curveEaseOut, animations: {cell.transform = .identity}, completion: nil)
-//    }
+    //    // Animate the cells
+    //    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    //
+    //        cell.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+    //
+    //        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: .curveEaseOut, animations: {cell.transform = .identity}, completion: nil)
+    //    }
     
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
         return true
@@ -145,6 +153,7 @@ extension ViewController: CheckersBoardCollectionViewDelegate {
     
 }
 
+// Implement exclusive or
 extension Bool {
     static func ^ (left: Bool, right: Bool) -> Bool {
         return left != right
