@@ -29,5 +29,12 @@ class CheckersBoxCollectionViewCell: UICollectionViewCell {
 
         }
         
+        if (box.getIsTapped()) {
+            pieceImage.alpha = 0.8
+        }
+        else {
+            pieceImage.alpha = 1
+        }
+        
     }
 }

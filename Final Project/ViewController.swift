@@ -54,6 +54,10 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         boxTo.changePieceColor(piece: tempBox.getPieceColor())
         boxTo.changeIsKing(king: tempBox.getIsKing())
         
+        // Reset pieceImage attributes
+        boxFrom.changeisTapped(tapped: false)
+        boxTo.changeisTapped(tapped: false)
+        
         // Update the array
         boxArray[moveFrom] = boxFrom
         boxArray[moveTo] = boxTo
@@ -95,12 +99,15 @@ extension ViewController: UICollectionViewDelegate {
     
     // Runs whenever a CollectionViewCell is tapped
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let box = boxArray[indexPath.row]
         print("tapped \(box.getPosition()) \t isOccupied = \(box.getIsOccupied())")
         
-//        movePiece(moveFrom: box.getPosition(), moveTo: 27)
+        boxArray[indexPath.row].changeisTapped(tapped: true)
+        collectionView.reloadData()
         
-        if (swapArray.count == 0){
+        // Add the box position to the array if the box contains a piece
+        if (box.getIsOccupied() && swapArray.count == 0){
             swapArray.append(indexPath.row)
         }
         else if (swapArray.count == 1){

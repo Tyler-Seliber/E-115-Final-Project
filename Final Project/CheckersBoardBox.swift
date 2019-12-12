@@ -22,6 +22,8 @@ class CheckersBoardBox: NSCopying {
     private var position: Int
     // Keep track if button should be clicked
     private var isEnabled: Bool
+    // Keep track if button is tapped to change its image attributes
+    private var isTapped: Bool
 //    var rowNumber: Int
 //    var columnNumber: Int
     
@@ -32,6 +34,7 @@ class CheckersBoardBox: NSCopying {
         isKing = false
         position = index
         isEnabled = false
+        isTapped = false
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
@@ -65,6 +68,9 @@ class CheckersBoardBox: NSCopying {
         isEnabled = enabled
     }
     
+    func changeisTapped(tapped: Bool) {
+        isTapped = tapped
+    }
     
     // MARK: Accessor Functions
     func getBackground() -> String {
@@ -89,5 +95,9 @@ class CheckersBoardBox: NSCopying {
     
     func getIsEnabled() -> Bool {
         return isEnabled
+    }
+    
+    func getIsTapped() -> Bool {
+        return isTapped
     }
 }
