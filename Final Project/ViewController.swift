@@ -111,8 +111,28 @@ extension ViewController: UICollectionViewDelegate {
         let box = boxArray[indexPath.row]
         print("tapped \(box.getPosition()) \t column: \(box.getColumn()) \t row \(box.getRow())  \t isOccupied = \(box.getIsOccupied())")
         
+        
+        var isFirstTapped: Bool
+        var canMovePiece: Bool?
+        
+        // Determine if the box is the first box tapped and has a piece
+        isFirstTapped = box.getIsOccupied() && swapArray.count == 0
+        
+        // Determine if the second box tapped can be used to move a piece to
+        if (swapArray.count == 1) {
+            let boxToIsEmpty = !box.getIsOccupied() ^ (box.getPosition() == swapArray[0])
+            let boxToSameColor = box.getBackground() == boxArray[swapArray[0]].getBackground()
+            let canMoveAsKing = (boxArray[swapArray[0]].getIsKing() && box.getRow() != boxArray[swapArray[0]].getRow())
+            let canMoveIfBlack = boxArray[swapArray[0]].getPieceColor() == "Black" && box.getRow() <= boxArray[swapArray[0]].getRow() + 2 && box.getRow() > boxArray[swapArray[0]].getRow()
+            let canMoveIfRed = boxArray[swapArray[0]].getPieceColor() == "Red" && box.getRow() >= boxArray[swapArray[0]].getRow() - 2 && box.getRow() < boxArray[swapArray[0]].getRow()
+            let toValidPosition = (canMoveAsKing || canMoveIfBlack || canMoveIfRed) ^ (box.getPosition() == swapArray[0])
+            
+            canMovePiece = boxToIsEmpty && boxToSameColor && toValidPosition
+        }
+        
+        
         // Add the box position to the array if the box contains a piece
-        if (box.getIsOccupied() && swapArray.count == 0){
+        if (isFirstTapped){
             swapArray.append(indexPath.row)
             boxArray[indexPath.row].changeisTapped(tapped: true)
             collectionView.reloadData()
@@ -122,14 +142,10 @@ extension ViewController: UICollectionViewDelegate {
              A piece has already been selected to move
              The second box tapped is not occupied, unless it is the same box the selected piece is currently in (acts as a "deselect piece")
              The second box tapped has the same background color as the box the piece started in (Keeps pieces on same color for whole game)
+             The second box tapped is a valid position for the piece to move to
              */
-        else if (swapArray.count == 1
-            && (!box.getIsOccupied() ^ (box.getPosition() == swapArray[0]))
-            && (box.getBackground() == boxArray[swapArray[0]].getBackground())
-            && ((boxArray[swapArray[0]].getIsKing() && box.getRow() != boxArray[swapArray[0]].getRow())
-                || (((boxArray[swapArray[0]].getPieceColor() == "Black" && box.getRow() <= boxArray[swapArray[0]].getRow() + 2 && box.getRow() > boxArray[swapArray[0]].getRow())
-                    || ((boxArray[swapArray[0]].getPieceColor() == "Red" && box.getRow() >= boxArray[swapArray[0]].getRow() - 2 && box.getRow() < boxArray[swapArray[0]].getRow()))))
-                ^ (box.getPosition() == swapArray[0]))) {
+        
+        else if (canMovePiece ?? false) {
             
             swapArray.append(indexPath.row)
             movePiece(moveFrom: swapArray.first!, moveTo: swapArray.last!)
