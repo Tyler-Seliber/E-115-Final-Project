@@ -3,9 +3,7 @@
 //  Final Project
 //
 //  Created by Tyler Seliber on 12/7/19.
-//  Copyright © 2019 Tyler Seliber and Jordan Sun. All rights reserved.
-//
-//  I pledge my honor that I have abided by the Stevens Honor System.
+//  Copyright © 2019 Tyler Seliber. All rights reserved.
 //
 
 import UIKit
@@ -21,26 +19,14 @@ class CheckersBoxCollectionViewCell: UICollectionViewCell {
         
         self.box = box
         
-        // Set box's background
         gridBoxImage.image = UIImage(named: box.getBackground())
-        // pieceImage is only visible when the box has a piece
         pieceImage.isHidden = !box.getIsOccupied()
-        
-        // See if occupied box's piece is a king or not, set image accordingly
         if (box.getIsOccupied() && box.getIsKing()) {
             pieceImage.image = UIImage(named: "\(box.getPieceColor())PieceCrown")
         }
         else if (box.getIsOccupied()) {
             pieceImage.image = UIImage(named: "\(box.getPieceColor())Piece")
 
-        }
-        
-        // Change appearance of piece when it is tapped
-        if (box.getIsTapped()) {
-            pieceImage.alpha = 0.8
-        }
-        else {
-            pieceImage.alpha = 1
         }
         
     }

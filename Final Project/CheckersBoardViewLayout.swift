@@ -3,9 +3,7 @@
 //  Final Project
 //
 //  Created by Tyler Seliber on 12/9/19.
-//  Copyright © 2019 Tyler Seliber and Jordan Sun. All rights reserved.
-//
-//  I pledge my honor that I have abided by the Stevens Honor System.
+//  Copyright © 2019 Tyler Seliber. All rights reserved.
 //
 
 import UIKit
@@ -20,7 +18,7 @@ extension CheckersBoardCollectionViewDelegate {
     }
 }
 
-class CheckersBoardViewLayout: UICollectionViewFlowLayout {
+class CheckersBoardViewLayout: UICollectionViewLayout {
     
     fileprivate var numberOfColumns = 8
     fileprivate var cellPadding: CGFloat = 0
@@ -44,8 +42,6 @@ class CheckersBoardViewLayout: UICollectionViewFlowLayout {
     }
     
     override func prepare() {
-        
-        self.minimumInteritemSpacing = 0
         
         // We begin measuring the location of items only if the cache is empty
         guard cache.isEmpty == true, let collectionView = collectionView else {return}
@@ -139,14 +135,12 @@ class CheckersBoardViewLayout: UICollectionViewFlowLayout {
 //            print ("frame.maxY", frame.maxY)
             
             //We increase the max height of the content as we get more items
-//            contentHeight = max(collectionView.frame.height + 10, frame.maxY)
-            contentHeight = collectionView.frame.height
+            contentHeight = max(collectionView.frame.height + 10, frame.maxY)
             
             
             //We increase the yOffset, too
 //            yOffset[column] = yOffset[column] + 2 * (height - cellPadding)
-            yOffset[column] += collectionViewContentSize.height / 8.0
-//            yOffset[column] += 42
+            yOffset[column] += 42
             
 //             print("column: \(column), yOffset: \(yOffset[column])")
             

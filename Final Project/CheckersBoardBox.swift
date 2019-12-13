@@ -3,9 +3,7 @@
 //  Final Project
 //
 //  Created by Tyler Seliber on 12/7/19.
-//  Copyright © 2019 Tyler Seliber and Jordan Sun. All rights reserved.
-//
-//  I pledge my honor that I have abided by the Stevens Honor System.
+//  Copyright © 2019 Tyler Seliber. All rights reserved.
 //
 
 import Foundation
@@ -22,28 +20,19 @@ class CheckersBoardBox: NSCopying {
     private var isKing: Bool
     // Keep track of box's position
     private var position: Int
-    private var column: Int
-    private var row: Int
-    // Keep track if button should be clicked
-    private var isEnabled: Bool
-    // Keep track if button is tapped to change its image attributes
-    private var isTapped: Bool
+//    var rowNumber: Int
+//    var columnNumber: Int
     
-    
-    init(color: String, index: Int, hasPiece: Bool, colorOfPiece: String, king: Bool) {
+    init(color: String, index: Int, hasPiece: Bool, colorOfPiece: String) {
         boxColor = "\(color)Square"
         isOccupied = hasPiece
         pieceColor = colorOfPiece
-        isKing = king
+        isKing = false
         position = index
-        column = position % 8
-        row = (position - column) / 8
-        isEnabled = false
-        isTapped = false
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
-        let copy = CheckersBoardBox(color: boxColor, index: position, hasPiece: isOccupied, colorOfPiece: pieceColor, king: isKing)
+        let copy = CheckersBoardBox(color: boxColor, index: position, hasPiece: isOccupied, colorOfPiece: pieceColor)
         return copy
         
     }
@@ -67,18 +56,8 @@ class CheckersBoardBox: NSCopying {
     
     func changePosition(pos: Int) {
         position = pos
-        // Update column and row
-        column = position % 8
-        row = (position - column) / 8
     }
     
-    func changeIsEnabled(enabled: Bool) {
-        isEnabled = enabled
-    }
-    
-    func changeisTapped(tapped: Bool) {
-        isTapped = tapped
-    }
     
     // MARK: Accessor Functions
     func getBackground() -> String {
@@ -99,21 +78,5 @@ class CheckersBoardBox: NSCopying {
     
     func getPosition() -> Int {
         return position
-    }
-    
-    func getColumn() -> Int {
-        return column
-    }
-    
-    func getRow() -> Int {
-        return row
-    }
-    
-    func getIsEnabled() -> Bool {
-        return isEnabled
-    }
-    
-    func getIsTapped() -> Bool {
-        return isTapped
     }
 }
