@@ -127,8 +127,8 @@ extension ViewController: UICollectionViewDelegate {
             && (!box.getIsOccupied() ^ (box.getPosition() == swapArray[0]))
             && (box.getBackground() == boxArray[swapArray[0]].getBackground())
             && ((boxArray[swapArray[0]].getIsKing() && box.getRow() != boxArray[swapArray[0]].getRow())
-                || (((boxArray[swapArray[0]].getPieceColor() == "Black" && box.getRow() <= boxArray[swapArray[0]].getRow() + 2 && box.getRow() != boxArray[swapArray[0]].getRow())
-                    || ((boxArray[swapArray[0]].getPieceColor() == "Red" && box.getRow() >= boxArray[swapArray[0]].getRow() - 2 && box.getRow() != boxArray[swapArray[0]].getRow()))))
+                || (((boxArray[swapArray[0]].getPieceColor() == "Black" && box.getRow() <= boxArray[swapArray[0]].getRow() + 2 && box.getRow() > boxArray[swapArray[0]].getRow())
+                    || ((boxArray[swapArray[0]].getPieceColor() == "Red" && box.getRow() >= boxArray[swapArray[0]].getRow() - 2 && box.getRow() < boxArray[swapArray[0]].getRow()))))
                 ^ (box.getPosition() == swapArray[0]))) {
             
             swapArray.append(indexPath.row)
