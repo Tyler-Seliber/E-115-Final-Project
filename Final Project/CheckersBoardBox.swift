@@ -38,7 +38,7 @@ class CheckersBoardBox: NSCopying {
         position = index
         column = position % 8
         row = (position - column) / 8
-        isEnabled = false
+        isEnabled = colorOfPiece == "Red" // Red player moves first
         isTapped = false
     }
     

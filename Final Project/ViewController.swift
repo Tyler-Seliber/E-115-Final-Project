@@ -67,31 +67,33 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         boxFrom.changeisTapped(tapped: false)
         boxTo.changeisTapped(tapped: false)
         
+        //Check and change player turn
+        if (player < 0) { // Was Black's turn, will be Red player's turn
+            for box in boxArray {
+                if (box.getIsOccupied() && box.getPieceColor() == "Black") {
+                    box.changeIsEnabled(enabled: false)
+                }
+                if (box.getIsOccupied() && box.getPieceColor() == "Red") {
+                    box.changeIsEnabled(enabled: true)
+                }
+            }
+        }
+        else if (player > 0) { // Was Red's turn, will be Black player's turn
+            for box in boxArray {
+                if (box.getIsOccupied() && box.getPieceColor() == "Red") {
+                    box.changeIsEnabled(enabled: false)
+                }
+                if (box.getIsOccupied() && box.getPieceColor() == "Black") {
+                    box.changeIsEnabled(enabled: true)
+                }
+            }
+        }
+        
+        player *= -1
+        
         // Update the array
         boxArray[moveFrom] = boxFrom
         boxArray[moveTo] = boxTo
-        
-        //Check player turn
-               if player > 0 {
-                   for box in boxArray {
-                       if box.getIsOccupied() && box.getPieceColor() == "Black" {
-                           box.changeIsEnabled(enabled: false)
-                       }
-                       if box.getIsOccupied() && box.getPieceColor() == "Red" {
-                           box.changeIsEnabled(enabled: true)
-                       }
-                   }
-               }//sepr
-               else if player < 0 {
-                   for box in boxArray {
-                       if box.getIsOccupied() && box.getPieceColor() == "Red" {
-                           box.changeIsEnabled(enabled: false)
-                       }
-                       if box.getIsOccupied() && box.getPieceColor() == "Black" {
-                           box.changeIsEnabled(enabled: true)
-                       }
-                       }
-                   }
         
         // Reload the collection view
         self.collectionView.reloadData()
@@ -139,7 +141,7 @@ extension ViewController: UICollectionViewDelegate {
         var canMovePiece: Bool?
         
         // Determine if the box is the first box tapped and has a piece
-        isFirstTapped = box.getIsOccupied() && swapArray.count == 0
+        isFirstTapped = box.getIsOccupied() && swapArray.count == 0 && box.getIsEnabled()
         
         // Determine if the second box tapped can be used to move a piece to
         if (swapArray.count == 1) {
@@ -167,15 +169,13 @@ extension ViewController: UICollectionViewDelegate {
              The second box tapped has the same background color as the box the piece started in (Keeps pieces on same color for whole game)
              The second box tapped is a valid position for the piece to move to
              */
-        
+            
         else if (canMovePiece ?? false) {
             
             swapArray.append(indexPath.row)
             movePiece(moveFrom: swapArray.first!, moveTo: swapArray.last!)
             swapArray.removeAll(keepingCapacity: true)
         }
-        
-        player *= -1
         
     }
     
