@@ -28,8 +28,6 @@ class CheckersBoardBox: NSCopying {
     private var isEnabled: Bool
     // Keep track if button is tapped to change its image attributes
     private var isTapped: Bool
-//    var rowNumber: Int
-//    var columnNumber: Int
     
     
     init(color: String, index: Int, hasPiece: Bool, colorOfPiece: String, king: Bool) {
