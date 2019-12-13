@@ -43,6 +43,12 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         
         let boxFrom = boxArray[moveFrom]
         let boxTo = boxArray[moveTo]
+        
+        // Check and set piece as king piece
+        if (!boxFrom.getIsKing()) {
+            boxFrom.changeIsKing(king: (boxFrom.getPieceColor() == "Black" && moveTo >= 56) || (boxFrom.getPieceColor() == "Red" && moveTo <= 7))
+        }
+        
         let tempBox = boxFrom.copy() as! CheckersBoardBox
         
         // Swap isOccupied, pieceColor, and isKing

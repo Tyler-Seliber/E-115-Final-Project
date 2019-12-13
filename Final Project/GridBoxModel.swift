@@ -82,7 +82,7 @@ class GridBoxModel {
             }
         }
         
-        let box = CheckersBoardBox(color: backgroundColor, index: position, hasPiece: isOccupied, colorOfPiece: pieceColor)
+        let box = CheckersBoardBox(color: backgroundColor, index: position, hasPiece: isOccupied, colorOfPiece: pieceColor, king: false)
         
         return box
     }

@@ -19,8 +19,12 @@ class CheckersBoxCollectionViewCell: UICollectionViewCell {
         
         self.box = box
         
+        // Set box's background
         gridBoxImage.image = UIImage(named: box.getBackground())
+        // pieceImage is only visible when the box has a piece
         pieceImage.isHidden = !box.getIsOccupied()
+        
+        // See if occupied box's piece is a king or not, set image accordingly
         if (box.getIsOccupied() && box.getIsKing()) {
             pieceImage.image = UIImage(named: "\(box.getPieceColor())PieceCrown")
         }
@@ -29,6 +33,7 @@ class CheckersBoxCollectionViewCell: UICollectionViewCell {
 
         }
         
+        // Change appearance of piece when it is tapped
         if (box.getIsTapped()) {
             pieceImage.alpha = 0.8
         }

@@ -27,18 +27,19 @@ class CheckersBoardBox: NSCopying {
 //    var rowNumber: Int
 //    var columnNumber: Int
     
-    init(color: String, index: Int, hasPiece: Bool, colorOfPiece: String) {
+    
+    init(color: String, index: Int, hasPiece: Bool, colorOfPiece: String, king: Bool) {
         boxColor = "\(color)Square"
         isOccupied = hasPiece
         pieceColor = colorOfPiece
-        isKing = false
+        isKing = king
         position = index
         isEnabled = false
         isTapped = false
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
-        let copy = CheckersBoardBox(color: boxColor, index: position, hasPiece: isOccupied, colorOfPiece: pieceColor)
+        let copy = CheckersBoardBox(color: boxColor, index: position, hasPiece: isOccupied, colorOfPiece: pieceColor, king: isKing)
         return copy
         
     }
