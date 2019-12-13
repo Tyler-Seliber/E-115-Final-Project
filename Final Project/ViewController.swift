@@ -25,6 +25,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     var model = GridBoxModel()
     var boxArray = [CheckersBoardBox]()
     var swapArray:[Int] = []
+    var player = 1
     
     
     override func viewDidLoad() {
@@ -69,6 +70,28 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         // Update the array
         boxArray[moveFrom] = boxFrom
         boxArray[moveTo] = boxTo
+        
+        //Check player turn
+               if player > 0 {
+                   for box in boxArray {
+                       if box.getIsOccupied() && box.getPieceColor() == "Black" {
+                           box.changeIsEnabled(enabled: false)
+                       }
+                       if box.getIsOccupied() && box.getPieceColor() == "Red" {
+                           box.changeIsEnabled(enabled: true)
+                       }
+                   }
+               }//sepr
+               else if player < 0 {
+                   for box in boxArray {
+                       if box.getIsOccupied() && box.getPieceColor() == "Red" {
+                           box.changeIsEnabled(enabled: false)
+                       }
+                       if box.getIsOccupied() && box.getPieceColor() == "Black" {
+                           box.changeIsEnabled(enabled: true)
+                       }
+                       }
+                   }
         
         // Reload the collection view
         self.collectionView.reloadData()
@@ -151,6 +174,8 @@ extension ViewController: UICollectionViewDelegate {
             movePiece(moveFrom: swapArray.first!, moveTo: swapArray.last!)
             swapArray.removeAll(keepingCapacity: true)
         }
+        
+        player *= -1
         
     }
     
