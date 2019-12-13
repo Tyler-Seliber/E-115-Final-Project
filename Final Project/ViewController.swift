@@ -109,7 +109,7 @@ extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let box = boxArray[indexPath.row]
-        print("tapped \(box.getPosition()) \t isOccupied = \(box.getIsOccupied())")
+        print("tapped \(box.getPosition()) \t column: \(box.getColumn()) \t row \(box.getRow())  \t isOccupied = \(box.getIsOccupied())")
         
         // Add the box position to the array if the box contains a piece
         if (box.getIsOccupied() && swapArray.count == 0){

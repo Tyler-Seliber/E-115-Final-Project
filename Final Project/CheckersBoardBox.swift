@@ -22,6 +22,8 @@ class CheckersBoardBox: NSCopying {
     private var isKing: Bool
     // Keep track of box's position
     private var position: Int
+    private var column: Int
+    private var row: Int
     // Keep track if button should be clicked
     private var isEnabled: Bool
     // Keep track if button is tapped to change its image attributes
@@ -36,6 +38,8 @@ class CheckersBoardBox: NSCopying {
         pieceColor = colorOfPiece
         isKing = king
         position = index
+        column = position % 8
+        row = (position - column) / 8
         isEnabled = false
         isTapped = false
     }
@@ -65,6 +69,9 @@ class CheckersBoardBox: NSCopying {
     
     func changePosition(pos: Int) {
         position = pos
+        // Update column and row
+        column = position % 8
+        row = (position - column) / 8
     }
     
     func changeIsEnabled(enabled: Bool) {
@@ -94,6 +101,14 @@ class CheckersBoardBox: NSCopying {
     
     func getPosition() -> Int {
         return position
+    }
+    
+    func getColumn() -> Int {
+        return column
+    }
+    
+    func getRow() -> Int {
+        return row
     }
     
     func getIsEnabled() -> Bool {
