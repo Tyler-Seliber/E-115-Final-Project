@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  Final Project
 //
-//  Created by Tyler Seliber on 12/7/19.
-//  Copyright © 2019 Tyler Seliber and Jordan Sun. All rights reserved.
+//  Created by Tyler Seliber and Weiliang Jordan Sun on 12/7/19.
+//  Copyright © 2019 Tyler Seliber and Weiliang Jordan Sun. All rights reserved.
 //
 //  I pledge my honor that I have abided by the Stevens Honor System.
 //

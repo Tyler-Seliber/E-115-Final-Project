@@ -3,7 +3,7 @@
 //  Final Project
 //
 //  Created by Tyler Seliber on 12/7/19.
-//  Copyright © 2019 Tyler Seliber. All rights reserved.
+//  Copyright © 2019 Tyler Seliber and Weiliang Jordan Sun. All rights reserved.
 //
 
 import UIKit
