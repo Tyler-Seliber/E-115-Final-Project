@@ -3,7 +3,9 @@
 //  Final Project
 //
 //  Created by Tyler Seliber on 12/9/19.
-//  Copyright © 2019 Tyler Seliber. All rights reserved.
+//  Copyright © 2019 Tyler Seliber and Jordan Sun. All rights reserved.
+//
+//  I pledge my honor that I have abided by the Stevens Honor System.
 //
 
 import UIKit
