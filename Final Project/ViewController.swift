@@ -124,8 +124,12 @@ extension ViewController: UICollectionViewDelegate {
              The second box tapped has the same background color as the box the piece started in (Keeps pieces on same color for whole game)
              */
         else if (swapArray.count == 1
-            && !box.getIsOccupied() ^ (indexPath.row == swapArray[0])
-            && box.getBackground() == boxArray[swapArray[0]].getBackground()){
+            && (!box.getIsOccupied() ^ (box.getPosition() == swapArray[0]))
+            && (box.getBackground() == boxArray[swapArray[0]].getBackground())
+            && ((boxArray[swapArray[0]].getIsKing() && box.getRow() != boxArray[swapArray[0]].getRow())
+                || (((boxArray[swapArray[0]].getPieceColor() == "Black" && box.getRow() <= boxArray[swapArray[0]].getRow() + 2 && box.getRow() != boxArray[swapArray[0]].getRow())
+                    || ((boxArray[swapArray[0]].getPieceColor() == "Red" && box.getRow() >= boxArray[swapArray[0]].getRow() - 2 && box.getRow() != boxArray[swapArray[0]].getRow()))))
+                ^ (box.getPosition() == swapArray[0]))) {
             
             swapArray.append(indexPath.row)
             movePiece(moveFrom: swapArray.first!, moveTo: swapArray.last!)
