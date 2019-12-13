@@ -67,29 +67,31 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         boxFrom.changeisTapped(tapped: false)
         boxTo.changeisTapped(tapped: false)
         
-        //Check and change player turn
-        if (player < 0) { // Was Black's turn, will be Red player's turn
-            for box in boxArray {
-                if (box.getIsOccupied() && box.getPieceColor() == "Black") {
-                    box.changeIsEnabled(enabled: false)
-                }
-                if (box.getIsOccupied() && box.getPieceColor() == "Red") {
-                    box.changeIsEnabled(enabled: true)
-                }
-            }
-        }
-        else if (player > 0) { // Was Red's turn, will be Black player's turn
-            for box in boxArray {
-                if (box.getIsOccupied() && box.getPieceColor() == "Red") {
-                    box.changeIsEnabled(enabled: false)
-                }
-                if (box.getIsOccupied() && box.getPieceColor() == "Black") {
-                    box.changeIsEnabled(enabled: true)
+        //Check and change player turn if the piece moved
+        if (moveFrom != moveTo) {
+            if (player < 0) { // Was Black's turn, will be Red player's turn
+                for box in boxArray {
+                    if (box.getIsOccupied() && box.getPieceColor() == "Black") {
+                        box.changeIsEnabled(enabled: false)
+                    }
+                    if (box.getIsOccupied() && box.getPieceColor() == "Red") {
+                        box.changeIsEnabled(enabled: true)
+                    }
                 }
             }
+            else if (player > 0) { // Was Red's turn, will be Black player's turn
+                for box in boxArray {
+                    if (box.getIsOccupied() && box.getPieceColor() == "Red") {
+                        box.changeIsEnabled(enabled: false)
+                    }
+                    if (box.getIsOccupied() && box.getPieceColor() == "Black") {
+                        box.changeIsEnabled(enabled: true)
+                    }
+                }
+            }
+            
+            player *= -1
         }
-        
-        player *= -1
         
         // Update the array
         boxArray[moveFrom] = boxFrom
