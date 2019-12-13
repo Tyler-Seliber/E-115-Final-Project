@@ -149,9 +149,10 @@ extension ViewController: UICollectionViewDelegate {
         if (swapArray.count == 1) {
             let boxToIsEmpty = !box.getIsOccupied() ^ (box.getPosition() == swapArray[0])
             let boxToSameColor = box.getBackground() == boxArray[swapArray[0]].getBackground()
-            let canMoveAsKing = (boxArray[swapArray[0]].getIsKing() && box.getRow() != boxArray[swapArray[0]].getRow())
-            let canMoveIfBlack = boxArray[swapArray[0]].getPieceColor() == "Black" && box.getRow() <= boxArray[swapArray[0]].getRow() + 2 && box.getRow() > boxArray[swapArray[0]].getRow()
-            let canMoveIfRed = boxArray[swapArray[0]].getPieceColor() == "Red" && box.getRow() >= boxArray[swapArray[0]].getRow() - 2 && box.getRow() < boxArray[swapArray[0]].getRow()
+            let toValidColumn = (abs(boxArray[swapArray[0]].getColumn() - box.getColumn()) == 2)
+            let canMoveAsKing = (boxArray[swapArray[0]].getIsKing() && box.getRow() != boxArray[swapArray[0]].getRow()) && toValidColumn
+            let canMoveIfBlack = boxArray[swapArray[0]].getPieceColor() == "Black" && box.getRow() <= boxArray[swapArray[0]].getRow() + 2 && box.getRow() > boxArray[swapArray[0]].getRow() && toValidColumn
+            let canMoveIfRed = boxArray[swapArray[0]].getPieceColor() == "Red" && box.getRow() >= boxArray[swapArray[0]].getRow() - 2 && box.getRow() < boxArray[swapArray[0]].getRow() && toValidColumn
             let toValidPosition = (canMoveAsKing || canMoveIfBlack || canMoveIfRed) ^ (box.getPosition() == swapArray[0])
             
             canMovePiece = boxToIsEmpty && boxToSameColor && toValidPosition
